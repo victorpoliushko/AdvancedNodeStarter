@@ -14,9 +14,15 @@ afterEach(async () => {
   await browser.close();
 })
 
-test('We can launch the browser', async () => {
+test('Header has the correct text', async () => {
   
   const text = await page.$eval('a.brand-logo', el => el.innerHTML);
 
   expect(text).toEqual('Blogster');
+});
+
+test('clicking login starts auth flow', async () => {
+  await page.click('.right a');
+
+  const url = page.url();
 });
