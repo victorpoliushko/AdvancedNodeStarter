@@ -14,6 +14,10 @@ mongoose.Query.prototype.cache = function(options = {}) {
   return this;
 };
 
+client.on("error", function (err) {
+  console.log("Error " + err);
+});
+
 mongoose.Query.prototype.exec = async function() {
   if (!this.useCache) {
     return exec.apply(this, arguments);
